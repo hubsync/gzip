@@ -1,4 +1,4 @@
-module github.com/gin-contrib/gzip
+module github.com/hubsync/gzip
 
 require (
 	github.com/gin-gonic/gin v1.5.0
