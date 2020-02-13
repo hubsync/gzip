@@ -67,8 +67,14 @@ func NewExcludedPaths(paths []string) ExcludedPaths {
 
 func (e ExcludedPaths) Contains(requestURI string) bool {
 	for _, path := range e {
-		if strings.HasPrefix(requestURI, path) {
-			return true
+		if strings.Contains(path, "*") {
+			if strings.Contains(requestURI, strings.Replace(path, "*", "", 1)) {
+				return true
+			}
+		} else {
+			if strings.HasPrefix(requestURI, path) {
+				return true
+			}
 		}
 	}
 	return false
